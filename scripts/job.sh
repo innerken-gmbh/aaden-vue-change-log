@@ -1,4 +1,4 @@
-LOG=$(git log --pretty=format:"'%h - %s'")
+LOG=$(git log -1 --pretty=format:"'%h - %s'")
 echo $LOG
 echo $LOG >>CHANGELOG.md
 node save-change-log.js $LOG
