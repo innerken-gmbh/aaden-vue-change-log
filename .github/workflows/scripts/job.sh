@@ -1,6 +1,6 @@
 LOG=$(git log --pretty=format:"%h - %s")
 $LOG >>CHANGELOG.md
-node .github/workflows/scripts/save-change-log.js $LOG
+node save-change-log.js $LOG
 git config user.name Haodong Ju
 git config user.email juhaodong@gmail.com
 git add .

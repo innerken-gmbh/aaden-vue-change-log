@@ -29,12 +29,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: send message to log
-        run: |
-          LOG=git log --pretty=format:"%h - %s"
-          $LOG >> CHANGELOG.md
-          node .github/workflows/scripts/save-change-log.js $LOG
-          git config user.name Haodong Ju
-          git config user.email juhaodong@gmail.com
-          git add .
-          git commit -m "[GITHUB CI] Update changelog"
-          git push
+        run: ./.github/script/job.sh
+        shell: bash
+
