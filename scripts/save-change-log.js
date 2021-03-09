@@ -2,7 +2,7 @@
 import { defaultChangeLog, defaultProject, defaultVersion, VersionTag } from './defaultStructrue.js'
 import fs from 'fs'
 
-const CHANGE_LOG_PATH = __dirname+'../src/assets/changelog/changelog.json'
+const CHANGE_LOG_PATH = 'src/assets/changelog/changelog.json'
 
 const log = process.argv.slice(2).join(' ')
 let [ref, project, tag, message] = log.split('::')
