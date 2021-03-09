@@ -41,3 +41,4 @@
 '7ee57c5 - [GITHUB CI] Update changelog'
 'a28608d - [GITHUB CI] Update changelog'
 623083b::aaden-vue-change-log::[GITHUB CI] Update changelog
+339b41a::aaden-vue-change-log::[GITHUB CI] Update changelog
