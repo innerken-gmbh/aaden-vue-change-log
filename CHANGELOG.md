@@ -13,3 +13,4 @@ a18a7e2::aaden-vue-change-log::[VersionChange]::release v0.1.17
 39f813e::aaden-vue-change-log::[GITHUB CI] Update changelog
 7910ae6::aaden-php-backend::[Fixed]::修复section图片路径错误
 218901b::aaden-vue-change-log::[GITHUB CI] Update changelog
+008c1cd::aaden-vue-change-log::[Added]::加入了简单的Html显示功能
