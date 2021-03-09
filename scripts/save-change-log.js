@@ -1,3 +1,2 @@
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`)
-})
+const log = process.argv.slice(2).join('')
+console.log("Log-->"+log)
