@@ -29,6 +29,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: send message to log
-        run: ./.github/script/job.sh
+        run: |
+          ls
+          ./.github/script/job.sh
         shell: bash
 
