@@ -1,5 +1,6 @@
 LOG=$(git log --pretty=format:"%h - %s")
-$LOG >>CHANGELOG.md
+echo $LOG
+echo $LOG >>CHANGELOG.md
 node save-change-log.js $LOG
 git config user.name Haodong Ju
 git config user.email juhaodong@gmail.com
