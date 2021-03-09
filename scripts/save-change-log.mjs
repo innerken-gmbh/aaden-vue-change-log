@@ -1,5 +1,5 @@
 #!/bin/node
-import { defaultChangeLog, defaultProject, defaultVersion, VersionTag } from './defaultStructrue.js'
+import { defaultChangeLog, defaultProject, defaultVersion, VersionTag } from './defaultStructrue.mjs'
 import fs from 'fs'
 
 const basePath = ''
