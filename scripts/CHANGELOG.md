@@ -35,3 +35,4 @@
 '409d377 - [GITHUB CI] Update changelog'
 '78d2316 - [GITHUB CI] Update changelog'
 'bafc82b - [GITHUB CI] Update changelog'
+'ef6adb3 - [GITHUB CI] Update changelog'
