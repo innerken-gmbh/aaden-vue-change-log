@@ -1,3 +1,4 @@
+#!/bin/bash
 LOG=$(git log -1 --pretty=format:"'%h - %s'")
 echo $LOG
 echo $LOG >>CHANGELOG.md
