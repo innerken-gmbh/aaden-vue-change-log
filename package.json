@@ -1,6 +1,6 @@
 {
   "name": "aaden-vue-change-log",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -47,7 +47,7 @@
       "release": true
     },
     "git": {
-      "commitMessage": "aves: release v${version}",
+      "commitMessage": "$npm_package_name:[VersionChange]release v${version}",
       "requireCleanWorkingDir": false
     }
   }
