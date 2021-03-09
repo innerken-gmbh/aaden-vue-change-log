@@ -19,7 +19,6 @@ function removeChar (str) {
   return str
 }
 
-
 const currentData = JSON.parse(
   fs.readFileSync(CHANGE_LOG_PATH)
 )
