@@ -9,6 +9,8 @@ let [ref, project, tag, message] = log.split('::')
 tag = removeChar(tag)
 
 
+
+
 if (!Object.keys(VersionTag).includes(tag)) {
   console.error(tag + ' not support')
   process.exit(-1)
