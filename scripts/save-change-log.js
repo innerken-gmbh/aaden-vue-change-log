@@ -12,7 +12,6 @@ if (!Object.keys(VersionTag).includes(tag)) {
   console.error(tag + ' not support')
   process.exit(-1)
 }
-
 function removeChar (str) {
   str = str.slice(1, -1)
   return str
