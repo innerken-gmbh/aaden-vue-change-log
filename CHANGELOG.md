@@ -6,3 +6,4 @@ efbf029::aaden-vue-change-log::[VersionChange]::release v0.1.15
 5c45309::aaden-vue-change-log::Merge branch 'master' of https://github.com/innerken-gmbh/aaden-vue-change-log
 393d769::aaden-vue-change-log::[FIXED]修正路径问题
 8169289::aaden-vue-change-log::Merge branch 'master' of https://github.com/innerken-gmbh/aaden-vue-change-log
+733f29d::aaden-vue-change-log::[Fixed]::去除无用空格
