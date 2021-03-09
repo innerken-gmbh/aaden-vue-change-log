@@ -1,1 +1,156 @@
-[{"version":"0.0.1","name":"name","projects":[{"name":"","changeLogs":[]}]},{"version":"0.1.12","name":"name","projects":[{"name":"aaden-vue-change-log","changeLogs":[{"type":"Added","log":[]},{"type":"Changed","log":[]},{"type":"Deprecated","log":[]},{"type":"Removed","log":[]},{"type":"Fixed","log":[]},{"type":"Yanked","log":[]},{"type":"VersionChange","log":[{"message":"Update changelog","timestamp":"3/9/2021, 2:27:10 PM","ref":"339b41a"},{"message":"Update changelog","timestamp":"3/9/2021, 2:29:36 PM","ref":"339b41a"},{"message":"Update changelog","timestamp":"3/9/2021, 2:30:13 PM","ref":"339b41a"}]}]}]},{"version":"0.1.17","name":"name","projects":[{"name":"aaden-vue-change-log","changeLogs":[{"type":"Added","log":[]},{"type":"Changed","log":[]},{"type":"Deprecated","log":[]},{"type":"Removed","log":[]},{"type":"Fixed","log":[]},{"type":"Yanked","log":[]},{"type":"VersionChange","log":[{"message":"release v0.1.17","timestamp":"3/9/2021, 1:43:08 PM","ref":"a18a7e2"}]}]},{"name":"aaden-php-backend","changeLogs":[{"type":"Added","log":[]},{"type":"Changed","log":[]},{"type":"Deprecated","log":[]},{"type":"Removed","log":[]},{"type":"Fixed","log":[{"message":"修复权限问题","timestamp":"3/9/2021, 2:05:15 PM","ref":"3471d17"},{"message":"修复section图片路径错误","timestamp":"3/9/2021, 2:19:40 PM","ref":"7910ae6"}]},{"type":"Yanked","log":[]},{"type":"VersionChange","log":[]}]}]}]
+[
+  {
+    "version": "0.0.1",
+    "name": "name",
+    "projects": [
+      {
+        "name": "",
+        "changeLogs": []
+      }
+    ]
+  },
+  {
+    "version": "0.1.12",
+    "name": "name",
+    "projects": [
+      {
+        "name": "aaden-vue-change-log",
+        "changeLogs": [
+          {
+            "type": "Added",
+            "log": []
+          },
+          {
+            "type": "Changed",
+            "log": []
+          },
+          {
+            "type": "Deprecated",
+            "log": []
+          },
+          {
+            "type": "Removed",
+            "log": []
+          },
+          {
+            "type": "Fixed",
+            "log": []
+          },
+          {
+            "type": "Yanked",
+            "log": []
+          },
+          {
+            "type": "VersionChange",
+            "log": [
+              {
+                "message": "Update changelog",
+                "timestamp": "3/9/2021, 2:27:10 PM",
+                "ref": "339b41a"
+              },
+              {
+                "message": "Update changelog",
+                "timestamp": "3/9/2021, 2:29:36 PM",
+                "ref": "339b41a"
+              },
+              {
+                "message": "Update changelog",
+                "timestamp": "3/9/2021, 2:30:13 PM",
+                "ref": "339b41a"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "version": "0.1.17",
+    "name": "name",
+    "projects": [
+      {
+        "name": "aaden-vue-change-log",
+        "changeLogs": [
+          {
+            "type": "Added",
+            "log": []
+          },
+          {
+            "type": "Changed",
+            "log": []
+          },
+          {
+            "type": "Deprecated",
+            "log": []
+          },
+          {
+            "type": "Removed",
+            "log": []
+          },
+          {
+            "type": "Fixed",
+            "log": []
+          },
+          {
+            "type": "Yanked",
+            "log": []
+          },
+          {
+            "type": "VersionChange",
+            "log": [
+              {
+                "message": "release v0.1.17",
+                "timestamp": "3/9/2021, 1:43:08 PM",
+                "ref": "a18a7e2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "aaden-php-backend",
+        "changeLogs": [
+          {
+            "type": "Added",
+            "log": []
+          },
+          {
+            "type": "Changed",
+            "log": []
+          },
+          {
+            "type": "Deprecated",
+            "log": []
+          },
+          {
+            "type": "Removed",
+            "log": []
+          },
+          {
+            "type": "Fixed",
+            "log": [
+              {
+                "message": "修复权限问题",
+                "timestamp": "3/9/2021, 2:05:15 PM",
+                "ref": "3471d17"
+              },
+              {
+                "message": "修复section图片路径错误",
+                "timestamp": "3/9/2021, 2:19:40 PM",
+                "ref": "7910ae6"
+              }
+            ]
+          },
+          {
+            "type": "Yanked",
+            "log": []
+          },
+          {
+            "type": "VersionChange",
+            "log": []
+          }
+        ]
+      }
+    ]
+  }
+]
