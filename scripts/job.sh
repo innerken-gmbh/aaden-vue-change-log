@@ -1,5 +1,6 @@
 #!/bin/bash
-LOG=$(git log -1 --pretty=format:"'%h - %s'")
+PROJECT_NAME=$(basename -s .git $(git config --get remote.origin.url))
+LOG=$(git log -1 --pretty=format:"%h::$PROJECT_NAME::%s")
 echo $LOG
 echo $LOG >>CHANGELOG.md
 node save-change-log.js $LOG

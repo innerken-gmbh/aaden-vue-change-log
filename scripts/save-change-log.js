@@ -4,7 +4,7 @@ import fs from 'fs'
 
 const log = process.argv.slice(2).join(' ')
 console.log('Log-->' + log)
-
+const [ref, project, tag, message] = log.split('::')
 
 const currentData = JSON.parse(
   fs.readFileSync('../src/assets/changelog/changelog.json')
