@@ -10,3 +10,4 @@ efbf029::aaden-vue-change-log::[VersionChange]::release v0.1.15
 e825109::aaden-vue-change-log::[Fixed]::修复路径问题
 a18a7e2::aaden-vue-change-log::[VersionChange]::release v0.1.17
 3471d17::aaden-php-backend::[Fixed]::修复权限问题
+39f813e::aaden-vue-change-log::[GITHUB CI] Update changelog
