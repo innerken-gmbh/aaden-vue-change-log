@@ -1,31 +1,67 @@
 #!/bin/node
-import { defaultVersion } from './defaultStructrue.js'
+import { defaultChangeLog, defaultProject, defaultVersion, VersionTag } from './defaultStructrue.js'
 import fs from 'fs'
 
+const CHANGE_LOG_PATH = '../src/assets/changelog/changelog.json'
 
 const log = process.argv.slice(2).join(' ')
-const [ref, project, tag, message] = log.split('::')
-console.log(ref, project, tag, message)
+let [ref, project, tag, message] = log.split('::')
+tag = removeChar(tag)
+if (!Object.keys(VersionTag).includes(tag)) {
+  console.error(tag + ' not support')
+  process.exit(-1)
+}
+
+function removeChar (str) {
+  str = str.slice(1, -1)
+  return str
+}
+
 
 const currentData = JSON.parse(
-  fs.readFileSync('../src/assets/changelog/changelog.json')
-).versions
-console.log(currentData)
+  fs.readFileSync(CHANGE_LOG_PATH)
+)
+
 
 const versionInfo = JSON.parse(
   fs.readFileSync('../package.json')
 ).version
-console.log(versionInfo)
 
-let index = findIndex(currentData, c => c.version === versionInfo)
-if (index === -1) {
-  currentData.push(
-    Object.assign({}, defaultVersion, { version: versionInfo })
-  )
-  index = currentData.length - 1
+
+
+let index = addIfNotExist(
+  Object.assign({}, defaultVersion,
+    { version: versionInfo }),
+  currentData,
+  c => c.version === versionInfo
+)
+
+const projectIndex = addIfNotExist(
+  Object.assign({}, defaultProject, { name: project }),
+  currentData[index].projects,
+  p => p.name === project
+)
+const projectElement = currentData[index]
+  .projects[projectIndex].changeLogs.find(c => c.type === tag)
+projectElement.log.push(Object.assign({}, defaultChangeLog,
+  { message: message, ref, timestamp: new Date().toLocaleString() }))
+
+saveJson(currentData)
+
+
+function saveJson (changeLog) {
+  fs.writeFileSync(CHANGE_LOG_PATH, JSON.stringify(changeLog))
 }
 
-const scope = currentData[index]
+function addIfNotExist (item, arr, func) {
+  let i = findIndex(arr, func)
+  if (i === -1) {
+    arr.push(item)
+    i = arr.length - 1
+  }
+  return i
+
+}
 
 function findIndex (arr, func) {
   let t = -1

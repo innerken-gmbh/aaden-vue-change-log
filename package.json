@@ -23,6 +23,7 @@
     "release-it": "^13.5.8",
     "vue-template-compiler": "^2.6.11"
   },
+  "type": "module",
   "eslintConfig": {
     "root": true,
     "env": {
@@ -47,7 +48,7 @@
       "release": true
     },
     "git": {
-      "commitMessage": "aaden-vue-change-log:[VersionChange]release v${version}",
+      "commitMessage": "[VersionChange]::release v${version}",
       "requireCleanWorkingDir": false
     }
   }

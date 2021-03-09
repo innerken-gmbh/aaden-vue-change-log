@@ -16,9 +16,13 @@ export const VersionTag = {
 
 export const defaultProject = {
   name: '',
-  changeLogs: Object.keys(VersionTag).map(k => ({
-    k: []
-  }))
+  changeLogs: Object.keys(VersionTag)
+    .map(k => {
+      const obj = {}
+      obj['type'] = k
+      obj['log']=[]
+      return obj
+    })
 }
 
 export const defaultChangeLog = {
