@@ -8,9 +8,6 @@ const log = process.argv.slice(2).join(' ')
 let [ref, project, tag, message] = log.split('::')
 tag = removeChar(tag)
 
-
-
-
 if (!Object.keys(VersionTag).includes(tag)) {
   console.error(tag + ' not support')
   process.exit(-1)
