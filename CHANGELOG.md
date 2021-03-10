@@ -21,3 +21,4 @@ deb7a2e::aaden-vue-change-log::[GITHUB CI] Update changelog
 f51a131::aaden-vue-change-log::[GITHUB CI] Update changelog
 fc27a59::aaden-vue-change-log::Create greetings.yml
 7c58f32::aaden-php-backend::[Changed]::向acs回报外卖桌号同时回报订单id
+8eb0b96::aaden-vue-change-log::[GITHUB CI] Update changelog
