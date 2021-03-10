@@ -15,3 +15,4 @@ a18a7e2::aaden-vue-change-log::[VersionChange]::release v0.1.17
 218901b::aaden-vue-change-log::[GITHUB CI] Update changelog
 008c1cd::aaden-vue-change-log::[Added]::加入了简单的Html显示功能
 0e68542::aaden-vue-change-log::[Fixed]::修复node残破不堪的模块系统
+d7dfe9a::aaden-php-backend::[Fixed]::修复自动提交更新记录
