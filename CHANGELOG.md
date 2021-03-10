@@ -23,3 +23,4 @@ fc27a59::aaden-vue-change-log::Create greetings.yml
 7c58f32::aaden-php-backend::[Changed]::向acs回报外卖桌号同时回报订单id
 8eb0b96::aaden-vue-change-log::[GITHUB CI] Update changelog
 d936cc8::aaden-php-backend::[Fixed]::网络请求中加入订单id回报
+cfbd9b0::aaden-vue-change-log::[GITHUB CI] Update changelog
