@@ -25,3 +25,4 @@ fc27a59::aaden-vue-change-log::Create greetings.yml
 d936cc8::aaden-php-backend::[Fixed]::网络请求中加入订单id回报
 cfbd9b0::aaden-vue-change-log::[GITHUB CI] Update changelog
 51686f1::aaden-vue-change-log::[Added]::给自动更新日志设计了vue界面
+1e3eafc::aaden-php-backend::[Added]::新增点号开子桌接口
