@@ -35,3 +35,4 @@ c132f86::aaden-vue-change-log::[GITHUB CI] Update changelog
 723a679::aaden-php-backend::[Added]::外卖厨房单添加取货方式和送达时间
 8a78819::aaden-vue-change-log::[GITHUB CI] Update changelog
 fbb2e50::aaden-php-backend::[Fixed]::修复了外卖打折情况下，订单确认邮件没有折扣的价格的问题。
+fa1e3a5::aaden-php-backend::[VersionChange]::release v1.6.87
