@@ -33,3 +33,4 @@ ae5f091::aaden-vue-change-log::[Added]::新增GithubAction文件
 61e8415::aaden-php-backend::[VersionChange]::release v1.6.86
 c132f86::aaden-vue-change-log::[GITHUB CI] Update changelog
 723a679::aaden-php-backend::[Added]::外卖厨房单添加取货方式和送达时间
+8a78819::aaden-vue-change-log::[GITHUB CI] Update changelog
