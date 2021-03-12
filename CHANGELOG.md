@@ -28,3 +28,4 @@ cfbd9b0::aaden-vue-change-log::[GITHUB CI] Update changelog
 1e3eafc::aaden-php-backend::[Added]::新增点号开子桌接口
 7468e46::aaden-vue-change-log::[GITHUB CI] Update changelog
 426bf3d::aaden-php-backend::[Changed]::换了个名字来保存时间，以此来分辨哪一个是真的时间
+3e0b282::aaden-vue-change-log::[GITHUB CI] Update changelog
