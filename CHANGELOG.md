@@ -30,3 +30,4 @@ cfbd9b0::aaden-vue-change-log::[GITHUB CI] Update changelog
 426bf3d::aaden-php-backend::[Changed]::换了个名字来保存时间，以此来分辨哪一个是真的时间
 3e0b282::aaden-vue-change-log::[GITHUB CI] Update changelog
 ae5f091::aaden-vue-change-log::[Added]::新增GithubAction文件
+61e8415::aaden-php-backend::[VersionChange]::release v1.6.86
