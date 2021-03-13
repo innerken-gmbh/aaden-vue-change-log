@@ -38,3 +38,4 @@ fbb2e50::aaden-php-backend::[Fixed]::修复了外卖打折情况下，订单确�
 fa1e3a5::aaden-php-backend::[VersionChange]::release v1.6.87
 9739ff2::aaden-vue-change-log::[GITHUB CI] Update changelog
 5c35388::aaden-php-backend::[Fixed]::修复了外卖有特殊字符时,会导致地址被吞的问题.
+dec9258::aaden-vue-change-log::[GITHUB CI] Update changelog
