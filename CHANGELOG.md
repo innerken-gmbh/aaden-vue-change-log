@@ -40,3 +40,4 @@ fa1e3a5::aaden-php-backend::[VersionChange]::release v1.6.87
 5c35388::aaden-php-backend::[Fixed]::修复了外卖有特殊字符时,会导致地址被吞的问题.
 dec9258::aaden-vue-change-log::[GITHUB CI] Update changelog
 ea14e35::aaden-php-backend::[VersionChange]::release v1.6.89
+ad6185a::aaden-vue-change-log::[GITHUB CI] Update changelog
