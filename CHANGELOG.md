@@ -44,3 +44,4 @@ ad6185a::aaden-vue-change-log::[GITHUB CI] Update changelog
 84e37c6::aaden-php-backend::[VersionChange]::release v1.6.90
 e3243d8::aaden-vue-change-log::[GITHUB CI] Update changelog
 e35c418::aaden-php-backend::[Added]::ZwichenBon上加入折扣显示
+db430f7::aaden-vue-change-log::[GITHUB CI] Update changelog
