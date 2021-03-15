@@ -1,6 +1,6 @@
 export const defaultVersion = {
   version: null,
-  name: 'name',
+  name: 'Daptrius巨隼',
   projects: []
 }
 export const VersionTag = {

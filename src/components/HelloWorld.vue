@@ -3,40 +3,41 @@
     <h1>{{ msg }}</h1>
     <div>
       <h2>自动更新日志  ChangeLog</h2>
-      <h3>#项目的重要改变会被记录在这个文档中</h3>
-      <h3>#All notable changes to this project will be documented in this file.</h3>
+      <div :style="activecolor" @mouseover="Mouseover" @mouseleave="Mouseleave">
+        <h3 ref="acp" v-html="msg1"></h3>
+      </div>
       <template>
         <div v-bind:key="version.version" v-for="version in log">
           <h4 v-if="version.projects[0].name !==undefined && version.projects[0].name.length !==0">
             <!--          如果项目名为空则不显示版本号及版本名-->
-            版本：[ {{version.name}} ] [ {{version.version}} ]</h4>
+            Aaden系统{{version.name}}{{version.version}}版本</h4>
           <div v-bind:key="projects.projects" v-for="projects in version.projects">
             <div v-if="projects.changeLogs !== undefined && projects.changeLogs.length !==0">
               <!--            如果更新日志为空则不显示项目名-->
-              <h5>项目名：[ {{projects.name}} ]</h5>
-              <div v-bind:key="changeLogs.changeLogs" v-for="changeLogs in projects.changeLogs ">
+             <h5>项目名：[ {{projects.name}} ]</h5>
+              <div v-bind:key="changeLogs.changeLogs" v-for="changeLogs in projects.changeLogs" >
                 <li v-if="changeLogs.log !== undefined && changeLogs.log.length !==0">
                   <!--                  只有log种类下有内容才显示log详情-->
                   {{changeLogs.type}}:
                 </li>
-                <div v-bind:key="message.message" v-for="message in changeLogs.log"  style="margin: 25px 50px">
-                  <ul v-if="message.message !== undefined && message.message.length !==0 ">
-                    --{{ message.message}}
+                <div v-bind:key="message.message" v-for="message in changeLogs.log" >
+                  <span v-bind:title="message.timestamp">
+                    <ul v-if="message.message !== undefined && message.message.length !==0"
+                        style="margin: 10px 20px">
+                    -- {{ message.message}}
                   </ul>
-                  <p v-if="message.message !== undefined && message.message.length !==0">
-                    Created At:{{message.timestamp}}
-                  </p>
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </template>
     </div>
   </div>
 </template>
 <script>
+
 export default {
   name: 'HelloWorld',
   props: {
@@ -45,6 +46,8 @@ export default {
   data: function() {
     return {
       log: require('@/assets/changelog/changelog.json'),
+      msg1:' <b># 项目的重要改变会被记录在这个文档中。</b><br/><br/># All notable changes to this project will be documented in this file.',
+      activecolor: "color:#2c3e50",
     }
   },
   methods:{
@@ -67,6 +70,15 @@ export default {
         return -1
       }
     },
+    Mouseover(){
+      this.avtivecolor = "color:#fede0e";
+      const acps = this.$refs.acp
+      acps.style.color="gray"
+    },
+    Mouseleave() {
+      this.activecolor = "color:#2c3e50";
+      this.$refs.acp.style="#2c3e50"
+    },
   },
   mounted () {
     console.log(this.log)
@@ -76,7 +88,6 @@ export default {
 }
 
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h2 {
@@ -87,7 +98,6 @@ h2 {
 }
 h3 {
   margin: 40px 0 0;
-  color: #2c3e50;
   text-align: left;
 }
 h4 {
@@ -112,8 +122,8 @@ ul {
 }
 
 li {
-  margin: 0 10px;
   text-align: left;
+  color: #2c3e50;
 }
 
 a {
