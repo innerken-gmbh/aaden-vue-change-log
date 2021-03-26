@@ -62,3 +62,4 @@ fbd7739::aaden-php-backend::[VersionChange]::release v1.6.98
 846e116::aaden-php-backend::[Added]::在结账单中加入了TSE二维码
 2dae2c7::aaden-vue-change-log::[GITHUB CI] Update changelog
 595c8c8::aaden-php-backend::[Added]::在后台中加入了打印机的错误日志，方便查看打印出现问题的原因。
+a41c32e::aaden-php-backend::[VersionChange]::release v1.6.100
