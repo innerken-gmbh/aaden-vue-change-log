@@ -67,3 +67,4 @@ f737478::aaden-vue-change-log::[GITHUB CI] Update changelog
 de369ee::aaden-php-backend::[Fixed]::修复外卖接受500问题
 24f41be::aaden-vue-change-log::[GITHUB CI] Update changelog
 a8feaba::aaden-php-backend::[VersionChange]::release v1.6.101
+bca6e34::aaden-vue-change-log::[GITHUB CI] Update changelog
