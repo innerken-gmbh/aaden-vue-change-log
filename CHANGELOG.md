@@ -78,3 +78,4 @@ cf8f012::aaden-php-backend::[VersionChange]::release v1.6.105
 ce8f188::aaden-vue-change-log::[GITHUB CI] Update changelog
 9b794b8::aaden-php-backend::[VersionChange]::release v1.6.106
 27a2a05::aaden-vue-change-log::[GITHUB CI] Update changelog
+dd6ff81::aaden-vue-change-log::[Added]::将版本名改为Daptrius巨隼
