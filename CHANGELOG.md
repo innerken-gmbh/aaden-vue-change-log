@@ -82,3 +82,4 @@ dd6ff81::aaden-vue-change-log::[Added]::将版本名改为Daptrius巨隼
 688c4c2::aaden-vue-change-log::[Added]::美化vue界面
 4a3cee9::aaden-php-backend::[VersionChange]::release v1.6.107
 9a52e7b::aaden-vue-change-log::[GITHUB CI] Update changelog
+14d3633::aaden-php-backend::[Added]::现在一个分区中有多个打印机时，会将任务按顺序分配个多个打印机，以此来完成多线生产的打印机功能。
