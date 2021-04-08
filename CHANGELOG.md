@@ -91,3 +91,4 @@ e6c8b1e::aaden-vue-change-log::[GITHUB CI] Update changelog
 f13740c::aaden-php-backend::[Changed]::二维码缩小
 75ed424::aaden-vue-change-log::[GITHUB CI] Update changelog
 9c80b02::aaden-php-backend::[VersionChange]::release v1.6.110
+af44da0::aaden-vue-change-log::[GITHUB CI] Update changelog
