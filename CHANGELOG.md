@@ -94,3 +94,4 @@ f13740c::aaden-php-backend::[Changed]::二维码缩小
 af44da0::aaden-vue-change-log::[GITHUB CI] Update changelog
 7065e41::aaden-php-backend::[Fixed]::修复一单里两个额外菜品时分单显示不正确的问题
 465d73a::aaden-vue-change-log::[GITHUB CI] Update changelog
+fc5bebd::aaden-php-backend::[VersionChange]::release v1.6.111
