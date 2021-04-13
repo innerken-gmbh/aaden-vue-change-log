@@ -99,3 +99,4 @@ fc5bebd::aaden-php-backend::[VersionChange]::release v1.6.111
 0e25731::aaden-php-backend::[VersionChange]::release v1.6.112
 add8ca3::aaden-vue-change-log::[GITHUB CI] Update changelog
 b94233a::aaden-php-backend::[VersionChange]::release v1.6.113
+cf53bec::aaden-vue-change-log::[GITHUB CI] Update changelog
