@@ -100,3 +100,4 @@ fc5bebd::aaden-php-backend::[VersionChange]::release v1.6.111
 add8ca3::aaden-vue-change-log::[GITHUB CI] Update changelog
 b94233a::aaden-php-backend::[VersionChange]::release v1.6.113
 cf53bec::aaden-vue-change-log::[GITHUB CI] Update changelog
+df27d11::aaden-vue-change-log::[Added]::美化了一下界面新增了图标
