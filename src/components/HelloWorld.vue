@@ -1,143 +1,76 @@
 <template>
-  <div class="hello" style="margin: auto;background: #f0ffff ;padding: 24px;max-width: 700px ">
-    <div>
-      <div>
-        <h2>自动更新日志  ChangeLog</h2>
-      </div>
-      <div :style="activecolor" @mouseover="Mouseover" @mouseleave="Mouseleave">
-        <h3 ref="acp" v-html="msg1"></h3>
-      </div>
-      <v-divider style="margin-top: 10px"></v-divider>
-      <template>
-        <div v-bind:key="version.version" v-for="version in log">
-          <h4 v-if="version.projects[0].name !==undefined && version.projects[0].name.length !==0" >
-            <!--          如果项目名为空则不显示版本号及版本名-->
-             Aaden系统 <v-icon color="light-blue lighten-2">{{ icons.mdiBird}}</v-icon> {{version.name}}{{version.version}}版本</h4>
-          <div v-bind:key="projects.projects" v-for="projects in version.projects">
-            <div v-if="projects.changeLogs !== undefined && projects.changeLogs.length !==0">
-              <!--            如果更新日志为空则不显示项目名-->
-             <h5>项目名：[ {{projects.name}} ]</h5>
-              <div v-bind:key="changeLogs.changeLogs" v-for="changeLogs in projects.changeLogs" >
-                <li v-if="changeLogs.log !== undefined && changeLogs.log.length !==0">
-                  <!--                  只有log种类下有内容才显示log详情-->
-                  {{changeLogs.type}}:
-                </li>
-                <div v-bind:key="message.message" v-for="message in changeLogs.log" >
-                  <span v-bind:title="message.timestamp">
-                    <ul v-if="message.message !== undefined && message.message.length !==0"
-                        style="margin: 10px 20px">
-                    -- {{ message.message}}
-                    </ul>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
+  <v-container>
+    <div class="py-4" v-for="version in log" :key="version.version">
+      <v-card>
+        <v-card-title>
+          Aaden系统
+          <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
+          {{ version.name }}{{ version.version }}版本
+        </v-card-title>
+
+        <!-- 设置 key 为 project.name，假设 project 下条目名字都不一样 -->
+        <v-card-text v-for="project in version.projects" :key="project.name">
+					<v-card-subtitle> 项目名：[ {{ project.name }} ] </v-card-subtitle>
+          <v-treeview dense :items="project.changeLogs"></v-treeview>
+        </v-card-text>
+      </v-card>
     </div>
-  </div>
+  </v-container>
 </template>
+
 <script>
-import { mdiBird } from '@mdi/js';
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  data: function() {
-    return {
-      log: require('@/assets/changelog/changelog.json'),
-      msg1:' <b># 项目的重要改变会被记录在这个文档中。</b><br/><br/># All notable changes to this project will be documented in this file.',
-      activecolor: "color:#2c3e50",
-      icons: {
-        mdiBird,
-      },
-      datePicker: new Date().toISOString().substr(0, 10),
-    }
-  },
-  methods:{
-    compare(a,b){
-      const aAttr = a.split('.');
-      const bAttr = b.split('.');
-      if(aAttr[2]>bAttr[2]) {
-        return 1
-      }
-      if(aAttr[0] == bAttr[0] && aAttr[1] >= bAttr[1]){
-        return 1
-      }
-      if(aAttr[0] == bAttr[0] && aAttr[1] == bAttr[1] && aAttr[2] >= bAttr[2]){
-        return 1
-      }
-      if(aAttr[0] == bAttr[0] && aAttr[1] == bAttr[1] && aAttr[2] == bAttr[2]){
-        return 0
-      }
-      else {
-        return -1
-      }
-    },
-    Mouseover(){
-      this.avtivecolor = "color:#fede0e";
-      const acps = this.$refs.acp
-      acps.style.color="gray"
-    },
-    Mouseleave() {
-      this.activecolor = "color:#2c3e50";
-      this.$refs.acp.style="#2c3e50"
-    },
-  },
-  mounted () {
-    console.log(this.log)
-    this.log= this.log.sort((a,b)=>-this.compare(a.version,b.version))
-    document.body.style.backgroundColor= "white"
-  },
-}
+  name: "HelloWorld",
 
+  data: () => ({
+    log: require("@/assets/changelog/changelog.json")
+      .filter((v) => {
+        return (
+          v.projects[0].name !== undefined && v.projects[0].name.length !== 0
+        );
+      })
+      .map((v) => {
+        v.projects = v.projects
+          .filter((p) => {
+            return p.changeLogs !== undefined && p.changeLogs.length !== 0;
+          })
+          .map((p) => {
+            var index = 0;
+            p.changeLogs = p.changeLogs
+              .filter((l) => {
+                return l.log !== undefined && l.log.length !== 0;
+              })
+              .map((l) => {
+                return {
+                  id: index++,
+                  name: l.type,
+                  children: l.log.map((l) => {
+                    return {
+                      id: index++,
+                      name: "-- " + l.message,
+                    };
+                  }),
+                };
+              });
+            return p;
+          });
+        return v;
+      })
+      .sort((left, right) => {
+        left = left.version.split(".");
+        right = right.version.split(".");
+        let n = Math.max(left.length, right.length);
+        for (let i = 0; i < n; i++) {
+          let code1 = left[i] === undefined ? 0 : parseInt(left[i]);
+          let code2 = right[i] === undefined ? 0 : parseInt(right[i]);
+          if (code1 > code2) {
+            return -1;
+          } else if (code1 < code2) {
+            return 1;
+          }
+        }
+        return 0;
+      }),
+  }),
+};
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h2 {
-  margin: 50px 0px 0;
-  font-size: xx-large;
-  color: black;
-  text-align: left;
-}
-h3 {
-  margin: 40px 0 0;
-  text-align: left;
-}
-h4 {
-  font-size: 20px;
-  color: black;
-  text-align: left;
-  margin-bottom: 20px ;
-  margin-top: 20px;
-}
-h5 {
-  font-size: large;
-  color: darkslategrey;
-  text-align: left;
-  margin-bottom: 15px;
-}
-p {
-  font-size: small;
-  text-align: left;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  text-align: left;
-}
-
-li {
-  text-align: left;
-  color: #2c3e50;
-}
-
-
-a {
-  color: azure;
-  text-align: -moz-left;
-}
-</style>
