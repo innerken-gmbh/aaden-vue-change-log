@@ -105,3 +105,4 @@ df27d11::aaden-vue-change-log::[Added]::美化了一下界面新增了图标
 72a8d93::aaden-vue-change-log::[Changed]: template 中的逻辑 extract 到 script 中, 页面包装到 Card 中
 6a57b3d::aaden-php-backend::[VersionChange]::release v1.6.114
 1ef02d7::aaden-vue-change-log::[GITHUB CI] Update changelog
+3b86af8::aaden-php-backend::[VersionChange]::release v1.6.115
