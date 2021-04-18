@@ -109,3 +109,4 @@ df27d11::aaden-vue-change-log::[Added]::美化了一下界面新增了图标
 62b2a2e::aaden-vue-change-log::[GITHUB CI] Update changelog
 b367573::aaden-php-backend::[VersionChange]::release v1.6.116
 67f0c33::aaden-vue-change-log::[GITHUB CI] Update changelog
+15bea3c::aaden-php-backend::[VersionChange]::release v1.6.117
