@@ -50,6 +50,26 @@ export default {
     rawLog,
     indexCounter: 0
   }),
+  methods: {
+    compareTwoVersion (left, right) {
+
+      const [main, sub, patch] = left.split('.').map(c => parseInt(c))
+      const [main_t, sub_t, patch_t] = right.split('.').map(c => parseInt(c))
+
+
+      let n = Math.max(left.length, right.length)
+      for (let i = 0; i < n; i++) {
+        let code1 = left[i] === undefined ? 0 : parseInt(left[i])
+        let code2 = right[i] === undefined ? 0 : parseInt(right[i])
+        if (code1 > code2) {
+          return -1
+        } else if (code1 < code2) {
+          return 1
+        }
+      }
+      return 0
+    }
+  },
   computed: {
     log: function () {
       return this.rawLog
@@ -60,40 +80,20 @@ export default {
                 )
                 .map((p) => {
                   p.changeLogs = p.changeLogs
-                      .filter((l) => {
-                        return l.log !== undefined && l.log.length !== 0
-                      })
-                      .map((l) => {
-                        return {
+                      .filter((l) => l.log !== undefined && l.log.length !== 0)
+                      .map((l) => ({
+                        id: this.indexCounter++,
+                        name: l.type,
+                        children: l.log.map((log) => ({
                           id: this.indexCounter++,
-                          name: l.type,
-                          children: l.log.map((log) => {
-                            return {
-                              id: this.indexCounter++,
-                              name: '-- ' + log.message,
-                            }
-                          }),
-                        }
-                      })
+                          name: '-- ' + log.message,
+                        })),
+                      }))
                   return p
                 })
             return v
           })
-          .sort((left, right) => {
-            left = left.version.split('.')
-            right = right.version.split('.')
-            let n = Math.max(left.length, right.length)
-            for (let i = 0; i < n; i++) {
-              let code1 = left[i] === undefined ? 0 : parseInt(left[i])
-              let code2 = right[i] === undefined ? 0 : parseInt(right[i])
-              if (code1 > code2) {
-                return -1
-              } else if (code1 < code2) {
-                return 1
-              }
-            }
-            return 0
-          })
+          .sort(this.compareTwoVersion())
     },
   },
 }
