@@ -1,20 +1,42 @@
 <template>
   <v-container>
-    <div class="py-4" v-for="version in log" :key="version.version">
-      <v-card>
-        <v-card-title>
-          Aaden系统
-          <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
-          {{ version.name }}{{ version.version }}版本
-        </v-card-title>
+    <v-row class="pa-4" justify="space-between">
+      <v-col cols="3">
+        <v-navigation-drawer permanent>
+          <v-list nav dense>
+            <v-list-item
+              :href="'#' + version.version"
+              v-for="version in log"
+              :key="version.version"
+            >
+              <v-list-item-title>
+                {{ version.name }}{{ version.version }}版本
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-col>
 
-        <!-- 设置 key 为 project.name，假设 project 下条目名字都不一样 -->
-        <v-card-text v-for="project in version.projects" :key="project.name">
-          <v-card-subtitle> 项目名：[ {{ project.name }} ] </v-card-subtitle>
-          <v-treeview dense :items="project.changeLogs"></v-treeview>
-        </v-card-text>
-      </v-card>
-    </div>
+      <!-- <v-col class="d-flex text-center"> -->
+      <v-col cols="8">
+        <v-card
+          :id="version.version"
+          class="my-4"
+          v-for="version in log"
+          :key="version.version"
+        >
+          <v-card-title>
+            Aaden系统
+            <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
+            {{ version.name }}{{ version.version }}版本
+          </v-card-title>
+          <v-card-text v-for="project in version.projects" :key="project.name">
+            <v-card-subtitle> 项目名：[ {{ project.name }} ] </v-card-subtitle>
+            <v-treeview dense :items="project.changeLogs"></v-treeview>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
