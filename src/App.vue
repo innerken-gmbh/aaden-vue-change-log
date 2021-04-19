@@ -1,13 +1,13 @@
 <template>
-  <v-app>
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+
+
+  <HelloWorld/>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
@@ -15,5 +15,5 @@ export default {
   components: {
     HelloWorld,
   },
-};
+}
 </script>
