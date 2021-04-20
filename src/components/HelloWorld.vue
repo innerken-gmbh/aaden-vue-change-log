@@ -3,8 +3,8 @@
     <v-row class="pa-4" justify="space-between">
       <v-col cols="3">
         <v-navigation-drawer permanent>
-          <v-list id="nav" rounded dense style="position: absolute; top: 0px;">
-            <v-list-item-group v-model="selected" color="primary">
+          <v-list id="nav" flat dense style="position: absolute;">
+            <v-list-item-group v-model="selected" color="grey">
               <v-list-item
                   :href="'#' + version.version"
                   v-for="version in log"
@@ -37,7 +37,8 @@
 <!--            v-if判断渲染是否成功-->
             <v-treeview dense :items="project.changeLogs"
                         v-if="project.changeLogs !== undefined && project.changeLogs.length !== 0"
-            ></v-treeview>
+            >
+            </v-treeview>
           </v-card-text>
         </v-card>
       </v-col>
@@ -113,6 +114,7 @@ export default {
       } else {
         nav.style.top = scrollTop - 5 + 'px'
       }
+      console.log(scrollTop)
     },
     //滚动条监听滚动事件，控制导航栏固定位置
   },
