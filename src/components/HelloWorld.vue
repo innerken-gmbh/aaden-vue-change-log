@@ -3,20 +3,21 @@
     <v-row class="pa-4" justify="space-between">
       <v-col cols="3">
         <v-navigation-drawer permanent>
-          <v-list nav dense>
-            <v-list-item
-              :href="'#' + version.version"
-              v-for="version in log"
-              :key="version.version"
-            >
-              <v-list-item-title>
-                {{ version.name }}{{ version.version }}版本
-              </v-list-item-title>
-            </v-list-item>
+          <v-list id="nav" rounded dense style="position: absolute; top: 0px;">
+            <v-list-item-group v-model="selected" color="primary">
+              <v-list-item
+                  :href="'#' + version.version"
+                  v-for="version in log"
+                  :key="version.version"
+              >
+                <v-list-item-title >
+                  {{ version.name }}{{ version.version }}版本
+                </v-list-item-title>
+              </v-list-item>
+            </v-list-item-group>
           </v-list>
         </v-navigation-drawer>
       </v-col>
-
       <!-- <v-col class="d-flex text-center"> -->
       <v-col cols="8">
         <v-card
@@ -31,8 +32,12 @@
             {{ version.name }}{{ version.version }}版本
           </v-card-title>
           <v-card-text v-for="project in version.projects" :key="project.name">
-            <v-card-subtitle> 项目名：[ {{ project.name }} ] </v-card-subtitle>
-            <v-treeview dense :items="project.changeLogs"></v-treeview>
+            <v-card-subtitle v-if="project.name !== undefined && project.name.length !==0">
+              项目名：[ {{ project.name }} ] </v-card-subtitle>
+<!--            v-if判断渲染是否成功-->
+            <v-treeview dense :items="project.changeLogs"
+                        v-if="project.changeLogs !== undefined && project.changeLogs.length !== 0"
+            ></v-treeview>
           </v-card-text>
         </v-card>
       </v-col>
@@ -45,6 +50,7 @@ export default {
   name: "HelloWorld",
   data: () => ({
     rawlog: require("@/assets/changelog/changelog.json"),
+    selected: 0,
   }),
   computed: {
     log: function () {
@@ -60,7 +66,7 @@ export default {
               return p.changeLogs !== undefined && p.changeLogs.length !== 0;
             })
             .map((p) => {
-              var index = 0;
+              let index = 0;
               p.changeLogs = p.changeLogs
                 .filter((l) => {
                   return l.log !== undefined && l.log.length !== 0;
@@ -98,5 +104,20 @@ export default {
         });
     },
   },
+  methods: {
+    handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      const nav = document.getElementById('nav')
+      if (scrollTop >= 0 && scrollTop < 5) {
+        nav.style.top = '0px'
+      } else {
+        nav.style.top = scrollTop - 5 + 'px'
+      }
+    },
+    //滚动条监听滚动事件，控制导航栏固定位置
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
 };
 </script>
