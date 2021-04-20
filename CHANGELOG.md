@@ -115,3 +115,4 @@ eb44cfb::aaden-vue-change-log::[GITHUB CI] Update changelog
 f14811c::aaden-vue-change-log::[GITHUB CI] Update changelog
 1e38a5a::aaden-vue-change-log::Merge branch 'master' of https://github.com/innerken-gmbh/aaden-vue-change-log
 42aa247::aaden-vue-change-log::[Added]::新增左侧导航栏固定显示功能
+b75baaa::aaden-vue-change-log::[Changed]::修改左侧导航栏的颜色和定位
