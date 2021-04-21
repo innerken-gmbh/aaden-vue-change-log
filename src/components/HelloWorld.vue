@@ -4,15 +4,17 @@
       <v-list nav>
         <v-subheader>Versions</v-subheader>
         <v-divider></v-divider>
-        <v-list-item
-          :href="'#' + version.version"
-          v-for="version in log"
-          :key="version.version"
-        >
-          <v-list-item-title>
-            {{ version.name }}{{ version.version }}版本
-          </v-list-item-title>
-        </v-list-item>
+        <v-list-item-group color="primary">
+          <v-list-item
+            :href="'#' + version.version"
+            v-for="version in log"
+            :key="version.version"
+          >
+            <v-list-item-title>
+              {{ version.name }}{{ version.version }}版本
+            </v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
     <v-main>
