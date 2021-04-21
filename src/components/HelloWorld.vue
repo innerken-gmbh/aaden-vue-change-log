@@ -5,9 +5,9 @@
         <v-subheader>Versions</v-subheader>
         <v-divider></v-divider>
         <v-list-item
-            :href="'#' + version.version"
-            v-for="version in log"
-            :key="version.version"
+          :href="'#' + version.version"
+          v-for="version in log"
+          :key="version.version"
         >
           <v-list-item-title>
             {{ version.name }}{{ version.version }}版本
@@ -19,17 +19,20 @@
       <v-row class="pa-4">
         <v-col>
           <v-sheet
-              :id="version.version"
-              class="my-4"
-              v-for="version in log"
-              :key="version.version"
+            :id="version.version"
+            class="my-4"
+            v-for="version in log"
+            :key="version.version"
           >
             <v-card-title>
               Aaden系统
               <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
               {{ version.name }}{{ version.version }}版本
             </v-card-title>
-            <v-card-text v-for="project in version.projects" :key="project.name">
+            <v-card-text
+              v-for="project in version.projects"
+              :key="project.name"
+            >
               <v-card-subtitle> 项目名：[ {{ project.name }} ]</v-card-subtitle>
               <v-treeview dense :items="project.changeLogs"></v-treeview>
             </v-card-text>
@@ -38,63 +41,61 @@
       </v-row>
     </v-main>
   </v-app>
-
 </template>
 
 <script>
-const rawLog = require('@/assets/changelog/changelog.json')
+const rawLog = require("@/assets/changelog/changelog.json");
 
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   data: () => ({
     rawLog,
-    indexCounter: 0
+    // indexCounter: 0
   }),
-  methods: {
-    compareTwoVersion (left, right) {
-
-      const [main, sub, patch] = left.split('.').map(c => parseInt(c))
-      const [main_t, sub_t, patch_t] = right.split('.').map(c => parseInt(c))
-
-
-      let n = Math.max(left.length, right.length)
-      for (let i = 0; i < n; i++) {
-        let code1 = left[i] === undefined ? 0 : parseInt(left[i])
-        let code2 = right[i] === undefined ? 0 : parseInt(right[i])
-        if (code1 > code2) {
-          return -1
-        } else if (code1 < code2) {
-          return 1
-        }
-      }
-      return 0
-    }
-  },
   computed: {
     log: function () {
       return this.rawLog
-          .filter((v) => v.projects[0].name !== undefined && v.projects[0].name.length !== 0)
-          .map((v) => {
-            v.projects = v.projects.filter((p) =>
-                p.changeLogs !== undefined && p.changeLogs.length !== 0
-                )
-                .map((p) => {
-                  p.changeLogs = p.changeLogs
-                      .filter((l) => l.log !== undefined && l.log.length !== 0)
-                      .map((l) => ({
-                        id: this.indexCounter++,
-                        name: l.type,
-                        children: l.log.map((log) => ({
-                          id: this.indexCounter++,
-                          name: '-- ' + log.message,
-                        })),
-                      }))
-                  return p
-                })
-            return v
-          })
-          .sort(this.compareTwoVersion())
+        .filter((v) => this.arrayIsNotEmpty(v.projects[0].name))
+        .map((v) => this.convertVersion(v))
+        .sort(this.compareVersion);
     },
   },
-}
+  methods: {
+    arrayIsNotEmpty(arr) {
+      return arr !== undefined && arr.length !== 0;
+    },
+    compareVersion(left, right) {
+      const [main, sub, patch] = left.version
+        .split(".")
+        .map((c) => parseInt(c));
+      const [main_t, sub_t, patch_t] = right.version
+        .split(".")
+        .map((c) => parseInt(c));
+      return -(
+        main === main_t &&
+        (sub > sub_t || (sub === sub_t && patch >= patch_t))
+      );
+    },
+    convertProject(p) {
+      var indexCounter = 0;
+      p.changeLogs = p.changeLogs
+        .filter((l) => this.arrayIsNotEmpty(l.log))
+        .map((l) => ({
+          id: indexCounter++,
+          name: l.type,
+          children: l.log.map((log) => ({
+            id: indexCounter++,
+            name: log.message,
+          })),
+        }));
+      return p;
+    },
+    convertVersion(v) {
+      v.projects = v.projects
+        .filter((p) => this.arrayIsNotEmpty(p.changeLogs))
+        .map((p) => this.convertProject(p));
+      return v;
+    },
+  },
+};
 </script>
