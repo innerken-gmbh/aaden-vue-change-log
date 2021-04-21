@@ -36,7 +36,7 @@
               :key="project.name"
             >
               <v-card-subtitle> 项目名：[ {{ project.name }} ]</v-card-subtitle>
-              <v-treeview dense :items="project.changeLogs"></v-treeview>
+              <v-treeview dense :items="project.changeLogs" :open-all="true"></v-treeview>
             </v-card-text>
           </v-sheet>
         </v-col>
@@ -52,7 +52,6 @@ export default {
   name: "HelloWorld",
   data: () => ({
     rawLog,
-    // indexCounter: 0
   }),
   computed: {
     log: function () {
