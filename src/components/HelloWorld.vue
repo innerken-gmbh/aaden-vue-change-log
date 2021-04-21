@@ -1,125 +1,103 @@
 <template>
-  <v-container>
-    <v-row class="pa-4" justify="space-between">
-      <v-col cols="3">
-        <v-navigation-drawer permanent>
-          <v-list id="nav" flat dense style="position: absolute;">
-            <v-list-item-group v-model="selected" color="grey">
-              <v-list-item
-                  :href="'#' + version.version"
-                  v-for="version in log"
-                  :key="version.version"
-              >
-                <v-list-item-title >
-                  {{ version.name }}{{ version.version }}版本
-                </v-list-item-title>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-navigation-drawer>
-      </v-col>
-      <!-- <v-col class="d-flex text-center"> -->
-      <v-col cols="8">
-        <v-card
-          :id="version.version"
-          class="my-4"
-          v-for="version in log"
-          :key="version.version"
-        >
-          <v-card-title>
-            Aaden系统
-            <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
-            {{ version.name }}{{ version.version }}版本
-          </v-card-title>
-          <v-card-text v-for="project in version.projects" :key="project.name">
-            <v-card-subtitle v-if="project.name !== undefined && project.name.length !==0">
-              项目名：[ {{ project.name }} ] </v-card-subtitle>
-<!--            v-if判断渲染是否成功-->
-            <v-treeview dense :items="project.changeLogs"
-                        v-if="project.changeLogs !== undefined && project.changeLogs.length !== 0"
+  <v-app>
+    <v-navigation-drawer permanent app>
+      <v-list nav>
+        <v-subheader>VERSIONS</v-subheader>
+        <v-divider></v-divider>
+        <v-list-item-group color="primary">
+            <v-list-item
+              :href="'#' + version.version"
+              v-for="version in log"
+              :key="version.version"
             >
-            </v-treeview>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+              <v-list-item-title>
+                {{ version.name }}{{ version.version }}版本
+              </v-list-item-title>
+            </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main>
+      <v-row class="pa-4">
+        <v-col>
+          <v-sheet
+            :id="version.version"
+            class="my-4"
+            v-for="version in log"
+            :key="version.version"
+          >
+            <v-card-title>
+              Aaden系统
+              <v-icon color="light-blue lighten-2">mdi-bird</v-icon>
+              {{ version.name }}{{ version.version }}版本
+            </v-card-title>
+            <v-card-text
+              v-for="project in version.projects"
+              :key="project.name"
+            >
+              <v-card-subtitle> 项目名：[ {{ project.name }} ]</v-card-subtitle>
+              <v-treeview dense :items="project.changeLogs"></v-treeview>
+            </v-card-text>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+const rawLog = require("@/assets/changelog/changelog.json");
+
 export default {
   name: "HelloWorld",
   data: () => ({
-    rawlog: require("@/assets/changelog/changelog.json"),
-    selected: 0,
+    rawLog,
+    // indexCounter: 0
   }),
   computed: {
     log: function () {
-      return this.rawlog
-        .filter((v) => {
-          return (
-            v.projects[0].name !== undefined && v.projects[0].name.length !== 0
-          );
-        })
-        .map((v) => {
-          v.projects = v.projects
-            .filter((p) => {
-              return p.changeLogs !== undefined && p.changeLogs.length !== 0;
-            })
-            .map((p) => {
-              let index = 0;
-              p.changeLogs = p.changeLogs
-                .filter((l) => {
-                  return l.log !== undefined && l.log.length !== 0;
-                })
-                .map((l) => {
-                  return {
-                    id: index++,
-                    name: l.type,
-                    children: l.log.map((l) => {
-                      return {
-                        id: index++,
-                        name: "-- " + l.message,
-                      };
-                    }),
-                  };
-                });
-              return p;
-            });
-          return v;
-        })
-        .sort((left, right) => {
-          left = left.version.split(".");
-          right = right.version.split(".");
-          let n = Math.max(left.length, right.length);
-          for (let i = 0; i < n; i++) {
-            let code1 = left[i] === undefined ? 0 : parseInt(left[i]);
-            let code2 = right[i] === undefined ? 0 : parseInt(right[i]);
-            if (code1 > code2) {
-              return -1;
-            } else if (code1 < code2) {
-              return 1;
-            }
-          }
-          return 0;
-        });
+      return this.rawLog
+        .filter((v) => this.arrayIsNotEmpty(v.projects[0].name))
+        .map((v) => this.convertVersion(v))
+        .sort(this.compareVersion);
     },
   },
   methods: {
-    handleScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      const nav = document.getElementById('nav')
-      if (scrollTop >= 0 && scrollTop < 5) {
-        nav.style.top = '0px'
-      } else {
-        nav.style.top = scrollTop - 5 + 'px'
-      }
-      console.log(scrollTop)
+    arrayIsNotEmpty(arr) {
+      return arr !== undefined && arr.length !== 0;
     },
-    //滚动条监听滚动事件，控制导航栏固定位置
+    compareVersion(left, right) {
+      const [main, sub, patch] = left.version
+        .split(".")
+        .map((c) => parseInt(c));
+      const [main_t, sub_t, patch_t] = right.version
+        .split(".")
+        .map((c) => parseInt(c));
+      return -(
+        main === main_t &&
+        (sub > sub_t || (sub === sub_t && patch >= patch_t))
+      );
+    },
+    convertProject(p) {
+      var indexCounter = 0;
+      p.changeLogs = p.changeLogs
+        .filter((l) => this.arrayIsNotEmpty(l.log))
+        .map((l) => ({
+          id: indexCounter++,
+          name: l.type,
+          children: l.log.map((log) => ({
+            id: indexCounter++,
+            name: log.message,
+          })),
+        }));
+      return p;
+    },
+    convertVersion(v) {
+      v.projects = v.projects
+        .filter((p) => this.arrayIsNotEmpty(p.changeLogs))
+        .map((p) => this.convertProject(p));
+      return v;
+    },
   },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-  }
 };
 </script>
