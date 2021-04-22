@@ -122,3 +122,4 @@ c90ca47::aaden-vue-change-log::Merge branch 'master' of https://github.com/inner
 f889d90::aaden-vue-change-log::[GITHUB CI] Update changelog
 9ebb08f::aaden-php-backend::[VersionChange]::release v1.6.121
 13a4fc2::aaden-vue-change-log::[GITHUB CI] Update changelog
+60b60f2::aaden-php-backend::[VersionChange]::release v1.6.122
