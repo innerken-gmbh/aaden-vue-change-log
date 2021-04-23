@@ -128,3 +128,4 @@ f889d90::aaden-vue-change-log::[GITHUB CI] Update changelog
 bf60f68::aaden-php-backend::[VersionChange]::release v1.6.123
 6b63307::aaden-vue-change-log::[GITHUB CI] Update changelog
 5c7e1b4::aaden-php-backend::[VersionChange]::release v1.6.124
+7e656eb::aaden-vue-change-log::[GITHUB CI] Update changelog
