@@ -127,3 +127,4 @@ f889d90::aaden-vue-change-log::[GITHUB CI] Update changelog
 25d8f53::aaden-vue-change-log::Merge branch 'master' of https://github.com/innerken-gmbh/aaden-vue-change-log
 bf60f68::aaden-php-backend::[VersionChange]::release v1.6.123
 6b63307::aaden-vue-change-log::[GITHUB CI] Update changelog
+5c7e1b4::aaden-php-backend::[VersionChange]::release v1.6.124
