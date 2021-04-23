@@ -2,18 +2,21 @@
   <v-app>
     <v-navigation-drawer permanent app>
       <v-list nav>
-        <v-subheader>VERSIONS</v-subheader>
+        <v-badge class="ma-2" color="primary" inline :content="log.length">
+          Version
+        </v-badge>
+
         <v-divider></v-divider>
         <v-list-item-group color="primary">
-            <v-list-item
-              :href="'#' + version.version"
-              v-for="version in log"
-              :key="version.version"
-            >
-              <v-list-item-title>
-                {{ version.name }}{{ version.version }}版本
-              </v-list-item-title>
-            </v-list-item>
+          <v-list-item
+            :href="'#' + version.version"
+            v-for="version in log"
+            :key="version.version"
+          >
+            <v-list-item-title>
+              {{ version.name }}{{ version.version }}版本
+            </v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -36,7 +39,25 @@
               :key="project.name"
             >
               <v-card-subtitle> 项目名：[ {{ project.name }} ]</v-card-subtitle>
-              <v-treeview dense :items="project.changeLogs" :open-all="true"></v-treeview>
+              <v-expansion-panels multiple flat>
+                <v-expansion-panel
+                  v-for="(changeLog, i) in project.changeLogs"
+                  :key="i"
+                >
+                  <v-expansion-panel-header>
+                    {{ $t(changeLog.type.toLowerCase()) }}
+                  </v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <div
+                      class="my-1"
+                      v-for="(log, i) in changeLog.log"
+                      :key="i"
+                    >
+                      {{ [i + 1] }}{{ " " + log.message }}
+                    </div>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
             </v-card-text>
           </v-sheet>
         </v-col>
@@ -78,6 +99,7 @@ export default {
       );
     },
     convertProject(p) {
+      /*
       var indexCounter = 0;
       p.changeLogs = p.changeLogs
         .filter((l) => this.arrayIsNotEmpty(l.log))
@@ -89,6 +111,8 @@ export default {
             name: log.message,
           })),
         }));
+        */
+      p.changeLogs = p.changeLogs.filter((l) => this.arrayIsNotEmpty(l.log));
       return p;
     },
     convertVersion(v) {
