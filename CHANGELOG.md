@@ -168,3 +168,4 @@ ec3452c::aaden-vue-change-log::[GITHUB CI] Update changelog
 42ce78a::aaden-php-backend::[VersionChange]::release v1.6.144
 67d33eb::aaden-vue-change-log::[GITHUB CI] Update changelog
 1349010::aaden-php-backend::[VersionChange]::release v1.6.145
+414228d::aaden-vue-change-log::[GITHUB CI] Update changelog
