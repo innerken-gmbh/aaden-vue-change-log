@@ -243,3 +243,4 @@ e257aed::aaden-php-backend::[VersionChange]::release v1.6.189
 732355e::aaden-vue-change-log::[GITHUB CI] Update changelog
 7e4fc92::aaden-php-backend::[VersionChange]::release v1.6.190
 d369740::aaden-vue-change-log::[GITHUB CI] Update changelog
+868fbf5::aaden-php-backend::[VersionChange]::release v1.6.191
