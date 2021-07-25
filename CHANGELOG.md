@@ -418,3 +418,4 @@ e5728a5::aaden-vue-change-log::[GITHUB CI] Update changelog
 4ee34e9::aaden-php-backend::[VersionChange]::release v1.7.83
 3b563e6::aaden-vue-change-log::[GITHUB CI] Update changelog
 801532d::aaden-php-backend::[VersionChange]::release v1.7.84
+98dcb9a::aaden-vue-change-log::[GITHUB CI] Update changelog
