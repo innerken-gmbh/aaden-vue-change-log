@@ -436,3 +436,4 @@ a876795::aaden-php-backend::[VersionChange]::release v1.7.87
 2a71590::aaden-php-backend::[VersionChange]::release v1.7.92
 94e2c7c::aaden-vue-change-log::[GITHUB CI] Update changelog
 3fad8ba::aaden-php-backend::[VersionChange]::release v1.7.93
+679ec7e::aaden-vue-change-log::[GITHUB CI] Update changelog
