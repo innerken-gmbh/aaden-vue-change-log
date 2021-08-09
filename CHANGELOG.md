@@ -450,3 +450,4 @@ dcd28ad::aaden-php-backend::[VersionChange]::release v1.7.98
 cf36902::aaden-php-backend::[VersionChange]::release v1.7.100
 a08363d::aaden-vue-change-log::[GITHUB CI] Update changelog
 ef6b134::aaden-php-backend::[VersionChange]::release v1.7.101
+5600f03::aaden-vue-change-log::[GITHUB CI] Update changelog
