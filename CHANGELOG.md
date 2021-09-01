@@ -494,3 +494,4 @@ a51face::aaden-vue-change-log::[GITHUB CI] Update changelog
 3feb70a::aaden-php-backend::[VersionChange]::release v1.7.124
 120516e::aaden-vue-change-log::[GITHUB CI] Update changelog
 a4df7b6::aaden-php-backend::[VersionChange]::release v1.7.125
+d7d81d9::aaden-vue-change-log::[GITHUB CI] Update changelog
