@@ -501,3 +501,4 @@ d7d81d9::aaden-vue-change-log::[GITHUB CI] Update changelog
 f78c0b1::aaden-vue-change-log::[GITHUB CI] Update changelog
 dbfbd2b::aaden-php-backend::[VersionChange]::release v1.7.129
 97c62e4::aaden-vue-change-log::[GITHUB CI] Update changelog
+148941c::aaden-php-backend::[VersionChange]::release v1.7.130
